@@ -28,7 +28,7 @@ In this Flutter project, we have implemented a simple user management system usi
 
 ### Prerequisites
 
-Before running this project, make sure you have Flutter and Dart installed on your system.
+Before running this project, make sure you have Flutter and Dart installed on your system. and add provider to your project.
 
 ### Installation
 
