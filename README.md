@@ -35,5 +35,5 @@ Before running this project, make sure you have Flutter and Dart installed on yo
 1. Clone the repository to your local machine.
 
 ```shell
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/islammohy/mvc_provider.git
 
