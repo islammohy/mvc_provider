@@ -22,7 +22,7 @@ class _UserViewState extends State<UserView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              Expanded(
                 child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
@@ -32,17 +32,28 @@ class _UserViewState extends State<UserView> {
                       return ListTile(
                           //  leading: const Icon(Icons.list),
                           trailing: InkWell(
-                            child: Icon(Icons.delete),
+                            child: const Icon(Icons.delete),
                             onTap: () {
                               Provider.of<UserController>(context,
                                       listen: false)
                                   .removeUser(index);
                             },
                           ),
-                          title: Selector<UserController, String>(
-                            builder: (context, value, child) => Text(value),
-                            selector: (context, userController) =>
-                                userController.users[index].name,
+                          title: Row(
+                            children: [
+                              Selector<UserController, String>(
+                                builder: (context, value, child) =>
+                                    Text('$value     age:'),
+                                selector: (context, userController) =>
+                                    userController.users[index].name,
+                              ),
+                              Selector<UserController, int>(
+                                builder: (context, value, child) =>
+                                    Text('$value'),
+                                selector: (context, userController) =>
+                                    userController.users[index].age,
+                              )
+                            ],
                           ));
                     }),
               ),
@@ -51,7 +62,10 @@ class _UserViewState extends State<UserView> {
                   Provider.of<UserController>(context, listen: false).addUser(
                       UserModel(
                           name: 'Gen Name ${1 + Random().nextInt(100 - 1 + 1)}',
-                          age: 50));
+                          age: 1 +
+                              Random().nextInt(30 -
+                                  1 +
+                                  1))); //------add random name with random age----
                 },
                 child: const Text('Add User'),
               )
